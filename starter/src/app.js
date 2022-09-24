@@ -24,6 +24,7 @@ async function initMap() {
     let personName = "dev7";
 
     await initWebGLOverlayView(map, people[personName]);
+    await initWebGLOverlayView2(map, people[personName]);
 })();
 
 
@@ -99,24 +100,6 @@ async function initWebGLOverlayView(map, person) {
                 renderer.render(scene, camera);
             }
         }
-
-        person.forEach(loc => {
-            const obj = {lat: loc.latitude, lng: loc.longitude, altitude: loc.altitude}
-
-
-            const res = (new Date().getTime() - startTime.getTime()) >= loc.timestamp;
-
-            if (res) {
-                const matrix = transformer.fromLatLngAltitude(obj);
-                camera.projectionMatrix = new THREE.Matrix4().fromArray(matrix);
-                webGLOverlayView.requestRedraw();
-                renderer.render(scene, camera);
-                if (!set.has(loc)) {
-                    map.panTo(obj);
-                    set.add(loc);
-                }
-            }
-        });
 
         renderer.resetState();
     }
