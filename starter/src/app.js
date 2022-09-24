@@ -96,9 +96,10 @@ async function initWebGLOverlayView1(map, person) {
 }
 
 async function initWebGLOverlayView2(map, person) {
-    let startTime = 1e9;
+    let startTime = new Date();
+    let tmpTime = startTime.getTime() + 1e9;
     for (let location of person) {
-        startTime = Math.min(startTime, location.timestamp);
+        startTime.setTime(Math.min(startTime.getTime(), tmpTime + location.timestamp ));
     }
     let scene, renderer, camera, loader;
 
@@ -158,9 +159,10 @@ async function initWebGLOverlayView2(map, person) {
 }
 
 async function initWebGLOverlayView3(map, person) {
-    let startTime = 1e9;
+    let startTime = new Date();
+    let tmpTime = startTime.getTime() + 1e9;
     for (let location of person) {
-        startTime = Math.min(startTime, location.timestamp);
+        startTime.setTime(Math.min(startTime.getTime(), tmpTime + location.timestamp ));
     }
     let scene, renderer, camera, loader;
 
