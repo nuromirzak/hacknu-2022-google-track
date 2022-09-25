@@ -8,19 +8,19 @@
 const schema = {
   Latitude: {
     // JSON object property name.
-    prop: "lat",
+    prop: "latitude",
     type: Number,
   },
   Longitude: {
-    prop: "lng",
+    prop: "longitude",
     type: Number,
   },
   Altitude: {
-    prop: "alt",
+    prop: "altitude",
     type: Number,
   },
   Identifier: {
-    prop: "id",
+    prop: "identifier",
     type: String,
   },
   Timestamp: {
@@ -28,25 +28,25 @@ const schema = {
     type: Number,
   },
   "Floor label": {
-    prop: "floor",
+    prop: "floor_label",
     type: String,
   },
   "Horizontal accuracy": {
-    prop: "horizontalAccuracy",
+    prop: "horizontal_accuracy",
     type: Number,
   },
   "Vertical accuracy": {
-    prop: "verticalAccuracy",
+    prop: "vertical_accuracy",
     type: Number,
   },
   "Confidence in location accuracy": {
-    prop: "confidence",
+    prop: "accuracy",
     type: Number,
   },
   Activity: {
     prop: "activity",
     type: String,
-    oneOf: ["walking", "running", "driving", "cycling", "swimming", null],
+    oneOf: ["walking", "running", "driving", "cycling", "swimming", "UNKNOWN", null],
   },
 };
 

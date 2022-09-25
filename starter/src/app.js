@@ -1,7 +1,7 @@
 import {Loader} from '@googlemaps/js-api-loader';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-import {people} from "./dataSet";
+import {data} from "./data";
 
 const apiOptions = {
     "apiKey": "AIzaSyC2LS6l5A_9T6YvzwW1khKdeql1UpO6W_g",
@@ -18,16 +18,18 @@ async function initMap() {
     return new google.maps.Map(mapDiv, mapOptions);
 }
 
-(async () => {
-    const map = await initMap();
+setTimeout(() => {
+    (async () => {
+        const map = await initMap();
 
-    let personName = "dev7";
-
-    await initWebGLOverlayView(map, people[personName]);
-    await initWebGLOverlayView1(map, people[personName]);
-    await initWebGLOverlayView2(map, people[personName]);
-    await initWebGLOverlayView3(map, people[personName]);
-})();
+        for (let personName in data) {
+            await initWebGLOverlayView(map, data[personName]);
+            await initWebGLOverlayView1(map, data[personName]);
+            await initWebGLOverlayView2(map, data[personName]);
+            await initWebGLOverlayView3(map, data[personName]);
+        }
+    })();
+}, 4000);
 
 
 let set = new Set();
@@ -43,8 +45,6 @@ async function initWebGLOverlayView(map, person) {
     person.sort((a, b) => {
         return a.timestamp - b.timestamp;
     });
-
-    console.log(person);
 
     let scene, renderer, camera, loader;
 
@@ -123,8 +123,6 @@ async function initWebGLOverlayView1(map, person) {
     person.sort((a, b) => {
         return a.timestamp - b.timestamp;
     });
-
-    console.log(person);
 
     let scene, renderer, camera, loader;
 
@@ -280,8 +278,6 @@ async function initWebGLOverlayView3(map, person) {
     person.sort((a, b) => {
         return a.timestamp - b.timestamp;
     });
-
-    console.log(person);
 
     let scene, renderer, camera, loader;
 
