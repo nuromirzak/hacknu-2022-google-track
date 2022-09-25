@@ -1,3 +1,4 @@
 .DS_Store
-./starter/node_modules
+./starter/node_modules/
+./xlsx2json/node_modules/
 .vscode
