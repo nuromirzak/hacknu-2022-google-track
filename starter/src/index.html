@@ -1,28 +1,141 @@
 <!DOCTYPE >
-<!--
- Copyright 2021 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
--->
 
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Google Maps Platform WebGL Codelab</title> 
-    <link rel="stylesheet" type="text/css" href="./styles.css" />   
-    <script src="./app.js" defer></script>    
-  </head>
-  <body>
-    <div id="map"></div>
-  </body>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Google Maps Platform WebGL Codelab</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="./styles.css" />
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<div class="offcanvas offcanvas-start mt-3 shadow" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Friends</h5>
+    <button type="button p-3" class="btn text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <ul id="append-lastLocation">
+      <li className="">
+        <a href="#"  className="btn d-flex justify-content-between">
+          <div style="margin-right: 50px;">
+            <b>Alice</b>
+          </div>
+        </a>
+      </li>
+      <li className="">
+        <a href="#"  className="btn d-flex justify-content-between">
+          <div style="margin-right: 50px;">
+            <b>Alice</b>
+          </div>
+        </a>
+      </li>
+      <li className="">
+        <a href="#"  className="btn d-flex justify-content-between">
+          <div style="margin-right: 50px;">
+            <b>Alice</b>
+          </div>
+        </a>
+      </li><li className="">
+      <a href="#"  className="btn d-flex justify-content-between">
+        <div style="margin-right: 50px;">
+          <b>Alice</b>
+        </div>
+      </a>
+    </li>
+      <li className="">
+        <a href="#"  className="btn d-flex justify-content-between">
+          <div style="margin-right: 50px;">
+            <b>Alice</b>
+          </div>
+        </a>
+      </li><li className="">
+      <a href="#"  className="btn d-flex justify-content-between">
+        <div style="margin-right: 50px;">
+          <b>Alice</b>
+        </div>
+      </a>
+    </li><li className="">
+      <a href="#"  className="btn d-flex justify-content-between">
+        <div style="margin-right: 50px;">
+          <b>Alice</b>
+        </div>
+      </a>
+    </li>
+      <li className="">
+        <a href="#"  className="btn d-flex justify-content-between">
+          <div style="margin-right: 50px;">
+            <b>Alice</b>
+          </div>
+        </a>
+      </li><li className="">
+      <a href="#"  className="btn d-flex justify-content-between">
+        <div style="margin-right: 50px;">
+          <b>Alice</b>
+        </div>
+      </a>
+    </li>
+
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+<div style="display: none">
+
+  <div class="d-flex flex-column mt-3 ms-3" id="btn-group">
+    <a class="btn p-3 bg-white rounded-pill shadow" style="width: fit-content;" data-bs-toggle="offcanvas" id="offcanvasExample-btn" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </a>
+    <a class="btn p-3 bg-white rounded-pill shadow mt-3" id="search-btn" href="#" onclick="showSearch()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+
+      <textarea name="input" onchange="showSearch()" id="search-input" cols="20" rows="1"></textarea>
+
+      <!-- <input list="browsers" name="browser" id="browser">
+      <datalist id="browsers">
+        <option value="Edge">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+      </datalist> -->
+    </a>
+  </div>
+</div>
+<script>
+  let cnt = 0
+  const removeSatelite = setInterval(() => {
+    try {
+      document.querySelector('.gmnoprint').remove()
+      document.querySelector('#btn-group').style.left = 0
+      setTimeout(() => {
+        if (cnt > 0) {
+          clearInterval(removeSatelite)
+        }
+      }, 1000)
+    } catch (error) {
+      cnt += 1
+    }
+  }, 100)
+</script>
+<div id="map"></div>
+</body>
 </html>

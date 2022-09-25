@@ -21,6 +21,7 @@ async function initMap() {
 setTimeout(() => {
     (async () => {
         const map = await initMap();
+        map.controls[google.maps.ControlPosition.LEFT_TOP].push(document.getElementById('btn-group'))
 
         for (let personName in data) {
             await initWebGLOverlayView(map, data[personName]);
